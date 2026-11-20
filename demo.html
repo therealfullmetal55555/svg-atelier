@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Композиции — демонстрация</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .demo{max-width:1150px;margin:auto;padding:42px 22px;}
+  .demo h1{font-size:clamp(28px,5vw,48px);margin:0 0 12px;line-height:1.05;}
+  .demo p{max-width:660px;color:var(--muted);line-height:1.55;}
+  .demo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:25px 0;}
+  .demo-card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  .demo-card figure{background:#eae5f3;display:grid;place-items:center;margin:0;height:250px;padding:12px;}
+  .demo-card img{display:block;max-height:226px;max-width:100%;box-shadow:0 1px 8px #211d2917;}
+  .demo-card div{padding:14px;display:grid;gap:8px;}
+  .demo-card small{color:var(--muted);}
+  .demo a{color:#503587;text-underline-offset:3px;}
+  .demo-card h2{font-size:16px;}
+  @media(max-width:740px){.demo-grid{grid-template-columns:1fr;}.demo-card figure{height:220px;}.demo-card img{max-height:196px;}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand"><div class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div><strong>Композиции</strong></div></header>
+<main class="demo">
+<h1>Три композиции из одной библиотеки</h1>
+<p>Откройте пример в редакторе и нажмите «Собрать композицию». Затем попробуйте сменить палитру, перетащить объект или выгрузить SVG. В третьем примере редактор подбирает предметы по списку и оставляет место для заголовка.</p>
+<div class="demo-grid">
+  <article class="demo-card"><figure><img src="examples/pieces.svg" alt="Пазлы, телефон и фоновая книга на сиреневом поле"></figure><div><h2>Из частей в целое</h2><small>По заголовку · 1200 × 630 · L · Сирень</small><a href="index.html?demo=0">Открыть в редакторе</a><a href="examples/pieces.svg" download>Скачать пример SVG</a></div></article>
+  <article class="demo-card"><figure><img src="examples/headphones.svg" alt="Наушники, цветы и фоновый телефон на мятном поле"></figure><div><h2>Тишина в наушниках</h2><small>По заголовку · 1080 × 1080 · S · Мята</small><a href="index.html?demo=1">Открыть в редакторе</a><a href="examples/headphones.svg" download>Скачать пример SVG</a></div></article>
+  <article class="demo-card"><figure><img src="examples/desk.svg" alt="Папка, ручка и монета на персиковом поле"></figure><div><h2>Папка, ручка, монета</h2><small>По списку · 1080 × 1350 · L · Персик</small><a href="index.html?demo=2">Открыть в редакторе</a><a href="examples/desk.svg" download>Скачать пример SVG</a></div></article>
+</div>
+<p>Для проверки импорта можно скачать <a href="examples/palette.json" download>пример собственной палитры</a> и загрузить его в редактор.</p>
+</main>
+</body>
+</html>

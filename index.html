@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Композиции — SVG‑редактор</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="library.js"></script><script defer src="engine.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><div class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div><strong>Композиции</strong><span>SVG‑редактор</span></div>
+  <button class="dark" id="export">Скачать SVG <span aria-hidden="true">↓</span></button>
+</header>
+<main class="layout">
+  <aside class="left">
+    <section class="assemble">
+      <h1>Автосборка</h1>
+      <div class="tabs" aria-label="Способ сборки">
+        <button data-mode="phrase" aria-pressed="true">По заголовку</button>
+        <button data-mode="objects" aria-pressed="false">По объектам</button>
+      </div>
+      <label class="sr" id="query-label" for="query">Заголовок или метафора</label>
+      <textarea id="query" rows="2" placeholder="Например, «Из частей в целое»"></textarea>
+      <button id="compose" class="accent">Собрать композицию</button>
+      <div id="examples" class="examples"></div>
+    </section>
+    <section class="library">
+      <div class="heading"><h2>Объекты</h2><output id="count"></output></div>
+      <input type="search" id="search" placeholder="Найти объект" aria-label="Найти объект">
+      <div id="assets" class="assets"></div>
+      <label class="file">＋ Импорт SVG<input type="file" id="svg-files" accept=".svg,image/svg+xml" multiple></label>
+    </section>
+  </aside>
+  <section class="workbench" aria-label="Холст композиции">
+    <div class="board-bar">
+      <div class="field"><label for="format">Формат</label>
+        <select id="format"><option value="wide">1200 × 630</option><option value="square">1080 × 1080</option><option value="tall">1080 × 1350</option></select></div>
+      <div class="field"><label for="size">Детализация</label><select id="size"><option>L</option><option>S</option></select></div>
+      <div class="field"><label for="layout">Раскладка</label>
+        <select id="layout"><option value="cluster">Собранно</option><option value="offset">Со смещением</option><option value="title">Под заголовок</option></select></div>
+    </div>
+    <div class="stage" id="stage"><svg id="canvas" xmlns="http://www.w3.org/2000/svg" fill="none" aria-label="Векторная композиция"></svg></div>
+    <div class="board-footer"><output id="dimensions"></output><p id="status" role="status"></p><button id="clear">Очистить</button></div>
+  </section>
+  <aside class="right">
+    <section class="palette"><h2>Палитра</h2><div id="palette-list"></div>
+      <label class="file">＋ Загрузить палитру<input type="file" id="palette-file" accept=".json,.txt,.gpl,application/json,text/plain"></label></section>
+    <section class="layers"><div class="heading"><h2>Слои</h2><output id="layer-count"></output></div><div id="layers"></div></section>
+    <section id="inspector" class="inspector" hidden>
+      <h2>Выбранный объект</h2>
+      <div class="inputs">
+        <label>X <input id="x" type="number" step="1"></label>
+        <label>Y <input id="y" type="number" step="1"></label>
+        <label>Угол <input id="angle" type="number" step="1"></label>
+      </div>
+      <label class="mono"><input id="mono" type="checkbox"> Фоновый объект</label>
+      <div class="layer-actions"><button id="up" aria-label="Слой выше" title="Слой выше">↑</button><button id="down" aria-label="Слой ниже" title="Слой ниже">↓</button><button id="duplicate" title="Дублировать">Копия</button><button id="remove" title="Удалить">Удалить</button></div>
+    </section>
+  </aside>
+</main>
+</body>
+</html>
