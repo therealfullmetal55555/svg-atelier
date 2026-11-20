@@ -53,7 +53,7 @@
         else if (best?.score) keys.push(best.key);
         else missing.push(name);
       }
-      return { keys: keys.slice(0, 8), missing };
+      return { keys, missing };
     }
     const ranked = rank(query).filter((result) => result.score).map((result) => result.key);
     const theme = themes.find(([pattern]) => pattern.test(normalize(query)))?.[1] || [];
@@ -72,13 +72,14 @@
     const common = scale(state);
     const placed = [];
     const output = [];
+    const layoutAnchors = anchors[state.layout];
     for (const [index, key] of keys.entries()) {
       const mono = mode === "phrase" && index === 2 && Boolean(library.objects[key]);
       const item = { id: id(), key, angle: 0, mono };
       const { box } = variant(item, state);
       const w = box[2] * common / width;
       const h = box[3] * common / height;
-      const [ax, ay] = anchors[state.layout][index];
+      const [ax, ay] = layoutAnchors[index % layoutAnchors.length];
       const candidates = [[ax, ay], ...Array.from({ length: 70 }, (_, i) => [
         .12 + (i % 10) * .083, .12 + Math.floor(i / 10) * .124,
       ])].map(([x, y]) => ({ x, y, w, h }));

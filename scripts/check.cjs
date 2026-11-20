@@ -45,6 +45,16 @@ const state = { ...api.defaults };
 assert.deepEqual(api.resolve("Монета, неизвестная штука, Монета", "objects", state),
   { keys: ["coin", "coin"], missing: ["неизвестная штука"] });
 assert.deepEqual(api.resolve("абракадабра", "phrase", state).keys, []);
+const allObjects = Object.values(lib.objects).map(({ name }) => name).join(", ");
+const fullList = api.resolve(allObjects, "objects", state);
+assert.equal(fullList.keys.length, Object.keys(lib.objects).length);
+assert.deepEqual(fullList.missing, []);
+for (const layout of ["cluster", "offset", "title"]) {
+  const crowded = api.compose(fullList.keys, { ...state, layout }, "objects");
+  assert.deepEqual(crowded.map(({ key }) => key), fullList.keys);
+  assert(crowded.every(({ x, y }) => Number.isFinite(x) && Number.isFinite(y)));
+}
+
 const colors = api.importPalette(require("../examples/palette.json"));
 assert.equal(colors[1], "#F9E9B7");
 assert.throws(() => api.importPalette(["invalid"]), /Нужны/);

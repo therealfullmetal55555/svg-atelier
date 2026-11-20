@@ -29,7 +29,9 @@
   const status = (message = "") => { $("status").textContent = message; };
   const select = (id) => {
     selected = id;
-    drawLayers();
+    $("layers").querySelectorAll("[data-layer]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.layer === id));
+    });
     drawInspector();
     drawSelection();
   };
@@ -266,7 +268,7 @@
     redraw();
   });
   document.addEventListener("keydown", (event) => {
-    if (event.target.closest("input,textarea,select,button") || !current()) return;
+    if (event.target.closest("input,textarea,select,button:not(.layer)") || !current()) return;
     if (event.key === "Delete" || event.key === "Backspace") {
       event.preventDefault();
       remove();
@@ -294,6 +296,7 @@
     select(element?.dataset.layer || null);
     if (!element) return;
     event.preventDefault();
+    canvas.focus({ preventScroll: true });
     const item = current();
     const p = pointer(event);
     drag = { id: event.pointerId, element, item, dx: item.x - p.x, dy: item.y - p.y };
