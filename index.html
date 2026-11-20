@@ -8,8 +8,11 @@
 </head>
 <body>
 <header class="top">
-  <div class="brand"><div class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div><strong>SVG Atelier</strong><span>Редактор векторных композиций</span></div>
-  <button class="dark" id="export">Скачать SVG <span aria-hidden="true">↓</span></button>
+  <div class="brand"><span class="mark" aria-hidden="true"></span><strong>SVG Atelier</strong></div>
+  <div class="top-actions">
+    <a href="demo.html">Примеры</a>
+    <button class="dark" id="export">Скачать SVG <span aria-hidden="true">↓</span></button>
+  </div>
 </header>
 <main class="layout">
   <aside class="left">
@@ -21,8 +24,8 @@
       </div>
       <label class="sr" id="query-label" for="query">Заголовок или метафора</label>
       <textarea id="query" rows="2" placeholder="Например, «Из частей в целое»"></textarea>
-      <button id="compose" class="accent">Собрать композицию</button>
-      <div id="examples" class="examples"></div>
+      <button id="compose" class="accent">Собрать</button>
+      <details class="examples"><summary>Примеры запросов</summary><div id="examples"></div></details>
     </section>
     <section class="library">
       <div class="heading"><h2>Объекты</h2><output id="count"></output></div>

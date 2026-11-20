@@ -6,24 +6,24 @@
 <link rel="stylesheet" href="style.css">
 <style>
   .demo{max-width:1150px;margin:auto;padding:42px 22px;}
-  .demo h1{font-size:clamp(28px,5vw,48px);margin:0 0 12px;line-height:1.05;}
+  .demo h1{font-size:clamp(26px,4vw,40px);margin:0 0 10px;line-height:1.08;letter-spacing:-.035em;}
   .demo p{max-width:660px;color:var(--muted);line-height:1.55;}
   .demo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:25px 0;}
-  .demo-card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-  .demo-card figure{background:#eae5f3;display:grid;place-items:center;margin:0;height:250px;padding:12px;}
-  .demo-card img{display:block;max-height:226px;max-width:100%;box-shadow:0 1px 8px #211d2917;}
+  .demo-card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+  .demo-card figure{background:#222220;display:grid;place-items:center;margin:0;height:250px;padding:12px;}
+  .demo-card img{display:block;max-height:226px;max-width:100%;box-shadow:0 5px 16px #0005;}
   .demo-card div{padding:14px;display:grid;gap:8px;}
   .demo-card small{color:var(--muted);}
-  .demo a{color:#503587;text-underline-offset:3px;}
+  .demo a{color:var(--ink);text-underline-offset:3px;}
   .demo-card h2{font-size:16px;}
   @media(max-width:740px){.demo-grid{grid-template-columns:1fr;}.demo-card figure{height:220px;}.demo-card img{max-height:196px;}}
 </style>
 </head>
 <body>
-<header class="top"><div class="brand"><div class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div><strong>SVG Atelier</strong><span>Демонстрация</span></div></header>
+<header class="top"><a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span><strong>SVG Atelier</strong></a><div class="top-actions"><a href="index.html">Редактор</a></div></header>
 <main class="demo">
 <h1>Три композиции из одной библиотеки</h1>
-<p>Откройте пример в редакторе, чтобы изменить композицию, сменить палитру, переместить объекты или выгрузить SVG. В третьем примере показан подбор по списку предметов с раскладкой под заголовок.</p>
+<p>Откройте пример в редакторе, чтобы сменить палитру, перетащить объект или выгрузить SVG. В третьем примере показан подбор по списку предметов с раскладкой под заголовок.</p>
 <div class="demo-grid">
   <article class="demo-card"><figure><img src="examples/pieces.svg" alt="Пазлы, телефон и фоновая книга на сиреневом поле"></figure><div><h2>Из частей в целое</h2><small>По заголовку · 1200 × 630 · L · Сирень</small><a href="index.html?demo=0">Открыть в редакторе</a><a href="examples/pieces.svg" download>Скачать пример SVG</a></div></article>
   <article class="demo-card"><figure><img src="examples/headphones.svg" alt="Наушники, цветы и фоновый телефон на мятном поле"></figure><div><h2>Тишина в наушниках</h2><small>По заголовку · 1080 × 1080 · S · Мята</small><a href="index.html?demo=1">Открыть в редакторе</a><a href="examples/headphones.svg" download>Скачать пример SVG</a></div></article>

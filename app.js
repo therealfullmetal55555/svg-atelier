@@ -73,7 +73,7 @@
     canvas.setAttribute("viewBox", `0 0 ${w} ${h}`);
     canvas.setAttribute("width", w);
     canvas.setAttribute("height", h);
-    canvas.style.setProperty("--canvas-width", `min(100%, ${68 * (w / h)}dvh)`);
+    canvas.style.setProperty("--canvas-ratio", w / h);
     canvas.innerHTML = api.background(state) + state.objects.map((item) =>
       `<g class="scene-item" data-layer="${item.id}" transform="${api.transform(item, state)}">${api.art(item, state)}</g>`).join("")
       + '<g id="selection-outline" aria-hidden="true"></g>';
@@ -126,14 +126,14 @@
     persist();
   }
 
-  function assemble() {
+  function assemble(libraryState = state) {
     const query = state.query.trim();
     if (!query) {
       status("Введите заголовок или названия объектов.");
       $("query").focus();
       return;
     }
-    const { keys, missing } = api.resolve(query, state.mode, state);
+    const { keys, missing } = api.resolve(query, state.mode, libraryState);
     if (!keys.length) {
       status("Подходящих объектов нет. Попробуйте другие слова или выберите объект в библиотеке.");
       return;
@@ -153,7 +153,7 @@
     const { label, ...demo } = demos[Number(button.dataset.demo)];
     Object.assign(state, demo, { custom: null });
     tools();
-    assemble();
+    assemble({ ...state, imports: undefined });
   });
 
   document.querySelector(".tabs").addEventListener("click", (event) => {
@@ -172,7 +172,7 @@
   $("query").addEventListener("keydown", (event) => {
     if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) assemble();
   });
-  $("compose").addEventListener("click", assemble);
+  $("compose").addEventListener("click", () => assemble());
   $("search").addEventListener("input", drawAssets);
   $("palette-list").addEventListener("click", (event) => {
     const button = event.target.closest("[data-palette]");
