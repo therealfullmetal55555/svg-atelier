@@ -6,10 +6,10 @@
 
 ## Быстрый запуск
 
-1. [Скачайте ZIP](https://github.com/therealfullmetal55555/svg-atelier/archive/refs/heads/main.zip) и распакуйте его или клонируйте репозиторий.
-2. Откройте `demo.html` в браузере. На странице представлены интерактивные демонстрационные примеры с переходом в редактор.
-
-Для прямого запуска редактора откройте `index.html`.
+- **Онлайн:** [Редактор SVG Atelier](https://therealfullmetal55555.github.io/svg-atelier/) · [Галерея примеров](https://therealfullmetal55555.github.io/svg-atelier/demo.html)
+- **Локально:**
+  1. [Скачайте ZIP](https://github.com/therealfullmetal55555/svg-atelier/archive/refs/heads/main.zip) и распакуйте его или клонируйте репозиторий.
+  2. Откройте `demo.html` в браузере (для прямого запуска откройте `index.html`).
 
 Проект не требует установки зависимостей (`npm install` не нужен), сборки, локального сервера и API-ключей. Всё работает локально в браузере на чистом JavaScript.
 
